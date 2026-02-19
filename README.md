@@ -1,5 +1,9 @@
 # Wazuh SOC Lab – Docker-based Detection & Response Environment
 
+Link to the incident report : 
+[Details of the attack](attacks/ssh_bruteforce_attack.txt)
+
+
 ## Project Overview
 
 This project simulates a real-world SOC environment using Wazuh, Docker, and Linux containers.
@@ -68,8 +72,7 @@ Network diagram:
 - Network event correlation
 
 details of the attack:
-`attacks/ssh_bruteforce_attack.txt`
-
+[Details of the attack](attacks/ssh_bruteforce_attack.txt)
 
 ---
 
