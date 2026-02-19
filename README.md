@@ -1,7 +1,7 @@
 # Wazuh SOC Lab – Docker-based Detection & Response Environment
 
 Link to the incident report : 
-[Details of the attack](attacks/ssh_bruteforce_attack.txt)
+[Details of the attack](docs/incidents/incident-ssh-bruteforce-2026-02-16.md)
 
 
 ## Project Overview
@@ -72,7 +72,7 @@ Network diagram:
 - Network event correlation
 
 details of the attack:
-[Details of the attack](attacks/ssh_bruteforce_attack.txt)
+attacks/ssh_bruteforce_attack.txt
 
 ---
 
@@ -95,6 +95,7 @@ Examples:
 
 Full investigation report available here:
 `docs/incidents/incident-ssh-bruteforce-2026-02-16.md`
+[Details of the attack](docs/incidents/incident-ssh-bruteforce-2026-02-16.md)
 
 
 The report includes:
