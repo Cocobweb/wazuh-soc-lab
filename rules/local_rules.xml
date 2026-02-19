@@ -1,0 +1,81 @@
+  GNU nano 8.3                                                                                       /var/ossec/etc/rules/local_rules.xml                                                                                        Modified  
+<!-- Local custom rules -->
+<group name="local">
+  <!-- ================================= -->
+  <!-- Multiple sudo failures -->
+  <!-- ================================= -->
+  <rule id="100100" level="5">
+    <if_sid>5404</if_sid>
+    <description>Three failed attempts to run sudo (individual event)</description>
+    <group>sudo,authentication,</group>
+  </rule>
+
+  <rule id="100101" level="10" frequency="3" timeframe="180">
+    <if_matched_sid>100100</if_matched_sid>
+    <same_source_ip />
+    <description>Repeated sudo brute force attempts (9+ failures in 3 minutes)</description>
+    <group>privilege_escalation,sudo,attack,</group>
+  </rule>
+
+  <!-- ================================= -->
+  <!-- SSH brute force -->
+  <!-- ================================= -->
+  <rule id="100102" level="5">
+    <if_group>authentication_failed</if_group>
+    <match>sshd</match>
+    <description>SSH authentication failure</description>
+    <group>authentication,ssh,</group>
+  </rule>
+
+  <rule id="100103" level="10" frequency="5" timeframe="60">
+    <if_matched_sid>100102</if_matched_sid>
+    <same_source_ip />
+    <description>SSH brute force detected (5+ failures in 60s)</description>
+    <group>attack,ssh,bruteforce,</group>
+  </rule>
+
+  <!-- ================================= -->
+  <!-- Root SSH login -->
+  <!-- ================================= -->
+  <rule id="100104" level="12">
+    <match>Accepted password for root</match>
+    <match>sshd</match>
+    <description>Root login via SSH detected</description>
+    <group>authentication,critical,</group>
+  </rule>
+
+  <!-- ================================= -->
+  <!-- FIM - Critical files modified -->
+  <!-- ================================= -->
+  <rule id="100105" level="12">
+    <if_sid>550</if_sid>
+    <match>/etc/shadow|/etc/passwd|/etc/sudoers</match>
+    <description>Critical system file modified</description>
+    <group>fim,integrity,critical,</group>
+  </rule>
+
+
+  <!-- ================================= -->
+  <!-- Netcat execution detection -->
+  <!-- ================================= -->
+  <rule id="100106" level="10">
+    <decoded_as>netcat-monitor</decoded_as>
+    <match>ALERT: netcat executed</match>
+    <description>Netcat execution detected</description>
+    <group>network,netcat,suspicious,exfiltration,</group>
+  </rule>
+
+  <rule id="100107" level="13">
+    <if_matched_sid>100106</if_matched_sid>
+    <match>/etc/shadow|/etc/passwd|/etc/sudoers</match>
+    <description>Netcat used with sensitive file (possible exfiltration)</description>
+    <group>attack,exfiltration,netcat,critical,</group>
+  </rule>
+
+  <rule id="100108" level="12">
+    <decoded_as>netcat-monitor</decoded_as>
+    <match>-l</match>
+    <description>Netcat listener started (possible backdoor)</description>
+    <group>attack,backdoor,netcat,</group>
+  </rule>
+</group>
