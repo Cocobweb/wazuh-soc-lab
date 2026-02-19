@@ -67,12 +67,16 @@ Network diagram:
 - /etc/passwd exfiltration
 - Network event correlation
 
+details of the attack:
+`attacks/ssh_bruteforce_attack.txt`
+
+
 ---
 
 ## Custom Detection Rules
 
 Custom rules created in:
-rules/local_rules.xml
+`rules/local_rules.xml`
 
 
 Examples:
@@ -87,7 +91,7 @@ Examples:
 ## Incident Investigation Example
 
 Full investigation report available here:
-docs/incidents/incident-ssh-bruteforce-2026-02-16.md
+`docs/incidents/incident-ssh-bruteforce-2026-02-16.md`
 
 
 The report includes:
@@ -100,11 +104,6 @@ The report includes:
 
 ---
 
-## Active Response (Optional Module)
-
-Automatic IP blocking via firewall-drop configured (optional).
-
----
 
 ## Dashboards Created
 
@@ -114,6 +113,11 @@ Automatic IP blocking via firewall-drop configured (optional).
 - Attack timeline visualization
 
 Screenshots available in `/screenshots`
+
+An example screenshot : 
+`/screenshots/attack_timeline_by_type.png`
+![Wazuh SOC Lab Architecture](/screenshots/attack_timeline_by_type.png)
+
 
 ---
 
