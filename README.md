@@ -94,7 +94,7 @@ Examples:
 ## Incident Investigation Example
 
 Full investigation report available here:
-`docs/incidents/incident-ssh-bruteforce-2026-02-16.md`
+`docs/incidents/incident-ssh-bruteforce-2026-02-16.md`  
 [Details of the attack](docs/incidents/incident-ssh-bruteforce-2026-02-16.md)
 
 
