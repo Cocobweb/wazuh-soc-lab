@@ -28,7 +28,7 @@ Host (Kali Linux)
 All components run inside Docker.
 
 Architecture diagram:
-`docs/architecture.png`
+![Wazuh SOC Lab Architecture](docs/architecture.png)
 
 ---
 
