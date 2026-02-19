@@ -34,7 +34,7 @@ Architecture diagram:
 
 ## Stack Used
 
-- Wazuh 4.x
+- Wazuh 4.14.2
 - OpenSearch
 - Docker & Docker Compose
 - Ubuntu container (victim)
