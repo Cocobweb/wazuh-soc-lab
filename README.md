@@ -31,6 +31,11 @@ Architecture diagram:
 `docs/architecture.png`
 ![Wazuh SOC Lab Architecture](docs/architecture.png)
 
+Network diagram:
+`docs/network-diagram.png`
+![Wazuh SOC Lab Architecture](docs/network-diagram.png)
+
+
 ---
 
 ## Stack Used
