@@ -72,7 +72,7 @@ Network diagram:
 - Network event correlation
 
 details of the attack:
-attacks/ssh_bruteforce_attack.txt
+`attacks/ssh_bruteforce_attack.txt̀`
 
 ---
 
