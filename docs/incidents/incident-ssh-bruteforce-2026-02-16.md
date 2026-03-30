@@ -8,7 +8,7 @@
 **Période d'activité:** 21:12:13 - 21:15:31 UTC (3 minutes 18 secondes)  
 **Date de détection:** 16 février 2026, 21:12:13 UTC  
 **Date du rapport:** 16 février 2026, 22:00:00 UTC  
-**Analyste:** [Votre Nom]  
+**Analyste:** Corentin Boutault
 **Niveau de sévérité:** CRITIQUE  
 **Statut:** CONFIRMÉ - Compromission avérée
 
